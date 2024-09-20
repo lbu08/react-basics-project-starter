@@ -16,17 +16,17 @@ import {
 
 export const RecipePage = ({ recipe, clickFn }) => {
   return (
-    <Center bgColor="white">
+    <Center bgColor="white" borderWidth="0px">
       <Card
         alignContent="center"
-        marginTop="4px"
+        marginTop="1rem"
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
-        variant="outline"
+        variant="inline"
         h="auto"
-        w="70%"
+        w={{ base: "100%", sm: "70%", md: "70%" }}
       >
-        <CardBody backgroundColor="darkseagreen" padding="0px">
+        <CardBody backgroundColor="orange.300" padding="0px">
           <Image
             w="100%"
             h="xs"
@@ -34,7 +34,7 @@ export const RecipePage = ({ recipe, clickFn }) => {
             position="relative"
             src={recipe.recipe.image}
             alt={recipe.recipe.label}
-            justifyContent="center"
+            justifyContent="top"
             alignItems="center"
           />
 
@@ -57,7 +57,12 @@ export const RecipePage = ({ recipe, clickFn }) => {
                 >
                   {recipe.recipe.mealType}
                 </Text>
-                <Heading fontSize="xx-large" textAlign="left" w="100%">
+                <Heading
+                  fontSize={{ base: 25, sm: 30, md: 40 }}
+                  minWidth={100}
+                  textAlign="left"
+                  w="100%"
+                >
                   {recipe.recipe.label}
                 </Heading>
                 <Box>
@@ -90,6 +95,7 @@ export const RecipePage = ({ recipe, clickFn }) => {
                     textAlign="left"
                     color="black"
                     margin="0px"
+                    minWidth={100}
                   >
                     <b>Ingredients: </b>
                     <Flex direction="column" gap={2} justify="left">

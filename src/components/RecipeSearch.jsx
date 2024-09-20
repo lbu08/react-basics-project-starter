@@ -16,9 +16,10 @@ export const RecipeSearch = ({ setResults }) => {
       onChange={handleChange}
       placeholder="Search recipes"
       size="md"
-      w={400}
+      w={{ base: 250, sm: 300, md: 450 }}
       mb={8}
       justify="center"
+      alignItems="center"
       borderRadius="md"
     />
   );

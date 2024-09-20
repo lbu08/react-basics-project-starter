@@ -15,6 +15,7 @@ export const RecipeCard = ({ recipe, clickFn }) => {
   return (
     <Center>
       <SimpleGrid
+        minChildWidth="20px"
         columns={4}
         spacing={100}
         alignItems="center"
@@ -29,13 +30,13 @@ export const RecipeCard = ({ recipe, clickFn }) => {
           variant="outline"
           padding="0px"
           justify="center"
-          h="26rem"
+          h="25rem"
           w="250px"
           margins="0px"
           textAlign="center"
           _hover={{
             transform: "scale(1.05)",
-            borderWidth: "2px",
+            borderWidth: "1.5px",
             borderColor: "green.800",
             borderRadius: "xl",
           }}
@@ -44,7 +45,7 @@ export const RecipeCard = ({ recipe, clickFn }) => {
             border="0.2px"
             h="100%"
             w="100%"
-            backgroundColor="darkseagreen"
+            backgroundColor="orange.300"
             borderRadius="xl"
             padding="0px"
           >
@@ -55,7 +56,6 @@ export const RecipeCard = ({ recipe, clickFn }) => {
               top="0px"
               w="100%"
               h="150px"
-              maxW={{ base: "40%", sm: "260px" }}
               src={recipe.recipe.image}
               alt="recipe.recipe.label"
               padding="0px"
