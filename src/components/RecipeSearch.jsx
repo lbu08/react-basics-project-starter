@@ -11,8 +11,10 @@ export const RecipeSearch = ({ setResults }) => {
 
     setResults(matchedRecipes);
   };
+
   return (
     <Input
+      id="MyInput"
       onChange={handleChange}
       placeholder="Search recipes"
       size="md"

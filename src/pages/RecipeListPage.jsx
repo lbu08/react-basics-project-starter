@@ -1,5 +1,5 @@
-import { Center, Heading, SimpleGrid } from "@chakra-ui/react";
-import { RecipeCard } from "../components/RecipeCard";
+import { Center, Heading, Flex, SimpleGrid } from "@chakra-ui/react";
+import { RecipeCard2 } from "../components/RecipeCard2";
 import { recipes } from "../utils/data";
 import { RecipeSearch } from "../components/RecipeSearch";
 import { useState } from "react";
@@ -27,21 +27,22 @@ export const RecipeListPage = ({ clickFn }) => {
         </Heading>
         <RecipeSearch setResults={setSelectedRecipeList} />
 
-        <SimpleGrid
-          w="80vw"
-          columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
-          spacing={70}
-          alignItems="center"
-        >
-          {selectedRecipeList.map((recipe) => (
-            <RecipeCard
-              clickFn={clickFn}
-              recipe={recipe}
-              recipes={selectedRecipeList}
-              key={recipe.label}
-            />
-          ))}
-        </SimpleGrid>
+        <Flex maxWidth="85%">
+          <SimpleGrid
+            columns={{ base: 1, sm: 1, md: 2, xl: 4 }}
+            max-width="1500px"
+            spacing={20}
+          >
+            {selectedRecipeList.map((recipe, item) => (
+              <RecipeCard2
+                clickFn={clickFn}
+                recipe={recipe}
+                recipes={selectedRecipeList}
+                key={item}
+              />
+            ))}
+          </SimpleGrid>
+        </Flex>
       </Center>
     </>
   );
