@@ -10,8 +10,10 @@ import {
   Image,
   Tag,
 } from "@chakra-ui/react";
+import { HealthLabels } from "./HealthLabels";
 
 export const RecipeCard = ({ recipe, clickFn }) => {
+  const healthFilters = ["Vegetarian", "Vegan"];
   return (
     <Center>
       <SimpleGrid
@@ -36,8 +38,6 @@ export const RecipeCard = ({ recipe, clickFn }) => {
           textAlign="center"
           _hover={{
             transform: "scale(1.05)",
-            borderWidth: "1.5px",
-            borderColor: "green.800",
             borderRadius: "xl",
           }}
         >
@@ -82,43 +82,26 @@ export const RecipeCard = ({ recipe, clickFn }) => {
                 textAlign="center"
                 color="green"
                 fontWeight="bold"
-              >
-                <Flex gap={2} justify="center" wrap="wrap">
-                  {recipe.recipe.healthLabels
-                    .filter((label) => label.includes("Vegetarian"))
-                    .map((filteredLabel) => (
-                      <Tag
-                        key={filteredLabel}
-                        textTransform="uppercase"
-                        bgColor="yellow"
-                        color="grey"
-                      >
-                        Vegetarian
-                      </Tag>
-                    ))}
-                  {recipe.recipe.healthLabels
-                    .filter((label) => label.includes("Vegan"))
-                    .map((filteredLabel) => (
-                      <Tag
-                        key={filteredLabel}
-                        textTransform="uppercase"
-                        bgColor="yellow"
-                        color="grey"
-                      >
-                        Vegan
-                      </Tag>
-                    ))}
-                </Flex>
-              </Text>
+              ></Text>
               <Flex gap={2} justify="center" wrap="wrap">
-                {recipe.recipe.dietLabels.map((dietLabels) => (
+                <>
+                  <HealthLabels
+                    healthLabels={recipe.recipe.healthLabels}
+                    filters={healthFilters}
+                    tagStyle={{ bgColor: "yellow", color: "grey" }}
+                  />
+                </>
+              </Flex>
+
+              <Flex gap={2} justify="center" wrap="wrap">
+                {recipe.recipe.dietLabels.map((filteredLabel, index) => (
                   <Tag
-                    key={dietLabels}
+                    key={`dietLabels-${index}`}
                     textTransform="uppercase"
                     bgColor="lightgreen"
                     color="white"
                   >
-                    {dietLabels}
+                    {filteredLabel}
                   </Tag>
                 ))}
               </Flex>
@@ -146,15 +129,15 @@ export const RecipeCard = ({ recipe, clickFn }) => {
                 </Text>
               )}
               <Flex gap={2} justify="center" wrap="wrap">
-                {recipe.recipe.cautions.map((cautions) => (
+                {recipe.recipe.cautions.map((filteredLabel, index) => (
                   <Tag
-                    key={recipe.cautions}
+                    key={`cautions-${index}`}
                     textTransform="uppercase"
                     fontWeight="bold"
                     bgColor="red.200"
                     color="red.600"
                   >
-                    {cautions}
+                    {filteredLabel}
                   </Tag>
                 ))}
               </Flex>

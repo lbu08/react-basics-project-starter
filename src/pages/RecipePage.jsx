@@ -99,32 +99,35 @@ export const RecipePage = ({ recipe, clickFn }) => {
                     </Text>
                   </Box>
                   <Box>
-                    <Text
-                      pt="3"
-                      fontSize="s"
-                      textAlign="left"
-                      color="black"
-                      margin="0px"
-                      minWidth={100}
-                    >
-                      <b>Ingredients: </b>
-                      <Flex direction="column" gap={2} justify="left">
-                        {recipe.recipe.ingredientLines.map(
-                          (filteredLabel, index) => (
-                            <Text
-                              key={`ingredientLines-${index}`}
-                              color="black"
-                              fontSize="xs"
-                            >
-                              {filteredLabel}
-                            </Text>
-                          )
-                        )}
-                      </Flex>
-                    </Text>
+                    <Flex>
+                      <Text
+                        pt="3"
+                        fontSize="s"
+                        textAlign="left"
+                        color="black"
+                        margin="0px"
+                        minWidth={100}
+                      >
+                        <b>Ingredients: </b>
+                      </Text>
+                    </Flex>
+                    <Flex direction="column" gap={2} justify="left">
+                      {recipe.recipe.ingredientLines.map(
+                        (filteredLabel, index) => (
+                          <Text
+                            key={`ingredientLines-${index}`}
+                            color="black"
+                            fontSize="xs"
+                          >
+                            {filteredLabel}
+                          </Text>
+                        )
+                      )}
+                    </Flex>
                   </Box>
                 </Stack>
               </Box>
+
               <Box padding="15px" marginTop="0px">
                 <Stack direction="column" spacing="2px">
                   <Text
@@ -135,22 +138,21 @@ export const RecipePage = ({ recipe, clickFn }) => {
                     color="black"
                   >
                     Health Labels:
-                    <Flex gap={2} justify="left" wrap="wrap">
-                      {recipe.recipe.healthLabels.map(
-                        (filteredLabel, index) => (
-                          <Tag
-                            key={`healthLabels-${index}`}
-                            textTransform="uppercase"
-                            bgColor="lightpurple"
-                            color="purple"
-                            fontSize="xs"
-                          >
-                            {filteredLabel}
-                          </Tag>
-                        )
-                      )}
-                    </Flex>
                   </Text>
+                  <Flex gap={2} justify="left" wrap="wrap">
+                    {recipe.recipe.healthLabels.map((filteredLabel, index) => (
+                      <Tag
+                        key={`healthLabels-${index}`}
+                        textTransform="uppercase"
+                        bgColor="lightpurple"
+                        color="purple"
+                        fontSize="xs"
+                      >
+                        {filteredLabel}
+                      </Tag>
+                    ))}
+                  </Flex>
+
                   {recipe.recipe.dietLabels?.length > 0 && (
                     <Text
                       pt="3"
@@ -189,17 +191,15 @@ export const RecipePage = ({ recipe, clickFn }) => {
                   )}
                   <Flex gap={2} justify="left" wrap="wrap">
                     {recipe.recipe.cautions.map((filteredLabel, index) => (
-                      <>
-                        <Tag
-                          key={`cautions-${index}`}
-                          textTransform="uppercase"
-                          bgColor="red.200"
-                          color="red.600"
-                          fontSize="xs"
-                        >
-                          {filteredLabel}
-                        </Tag>
-                      </>
+                      <Tag
+                        key={`cautions-${index}`}
+                        textTransform="uppercase"
+                        bgColor="red.200"
+                        color="red.600"
+                        fontSize="xs"
+                      >
+                        {filteredLabel}
+                      </Tag>
                     ))}
                   </Flex>
 

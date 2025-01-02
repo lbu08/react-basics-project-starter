@@ -1,5 +1,5 @@
 import { Center, Heading, Flex, SimpleGrid } from "@chakra-ui/react";
-import { RecipeCard2 } from "../components/RecipeCard2";
+import { RecipeCard } from "../components/RecipeCard";
 import { recipes } from "../utils/data";
 import { RecipeSearch } from "../components/RecipeSearch";
 import { useState } from "react";
@@ -25,7 +25,16 @@ export const RecipeListPage = ({ clickFn }) => {
         >
           Winc Recipe Checker
         </Heading>
-        <RecipeSearch setResults={setSelectedRecipeList} />
+        <div>
+          {!selectedRecipeList.length ? (
+            <>
+              <RecipeSearch setResults={setSelectedRecipeList} />
+              <div>No recipes found</div>
+            </>
+          ) : (
+            <RecipeSearch setResults={setSelectedRecipeList} />
+          )}
+        </div>
 
         <Flex maxWidth="85%">
           <SimpleGrid
@@ -34,7 +43,7 @@ export const RecipeListPage = ({ clickFn }) => {
             spacing={20}
           >
             {selectedRecipeList.map((recipe, item) => (
-              <RecipeCard2
+              <RecipeCard
                 clickFn={clickFn}
                 recipe={recipe}
                 recipes={selectedRecipeList}
